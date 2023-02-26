@@ -1,6 +1,6 @@
 const https = require('https');
 
-const ENDPOINT = "https://www.metaweather.com/api/location/766273/";
+const ENDPOINT = "https://wttr.in/madrid?0&format=j1";
 
 let request = https.get(ENDPOINT, (res) => { 
     if (res.statusCode !== 200 ) {
@@ -22,11 +22,13 @@ let request = https.get(ENDPOINT, (res) => {
         //-- Obtener la variable con la informacion
         let tiempo = JSON.parse(data);
 
-        let temp = tiempo.consolidated_weather[0].the_temp;
+        let lugar = tiempo.nearest_area[0].areaName[0].value;
+        let temp = tiempo.current_condition[0].temp_C;
+        let desc = tiempo.current_condition[0].weatherDesc[0].value;
 
-        console.log("Lugar: " + tiempo.title);
-        console.log("Temperatura: " + temp);
-        console.log("Hora: " + tiempo.time);
+        console.log("Lugar: " + lugar);
+        console.log("Temperatura: " + temp + " Grados");
+        console.log("Descripción: " + desc);
 
         
     });
