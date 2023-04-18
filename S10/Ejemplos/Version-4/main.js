@@ -25,7 +25,7 @@ electron.app.on('ready', () => {
 
   //-- Cargar contenido web en la ventana
   //-- La ventana es en realidad.... ¡un navegador!
-  win.loadURL('https://www.urjc.es/etsit');
+  win.loadURL('https://www.urjc.es/eif');
 
 });
 
